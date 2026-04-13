@@ -1,0 +1,19 @@
+<h1>  Cup Extended Soundboard  </h1>
+
+<button
+onclick="myFunction()"
+>
+    Test Sound Effect 
+</button>
+
+<script>
+    async function myFunction() {
+        const res = await fetch("http://localhost:8080/whatevertheendpointisgonnabe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: "whatevercontentweshouldbesending"
+      })
+    }
+</script>
