@@ -14,6 +14,10 @@ module.exports = {
     data: new SlashCommandBuilder().setName('playaudio').setDescription('makes bot play audio in vc'),
     
 	async execute(interaction) {
+        // NOTE FOR THE FUTURE:
+        // Contrary to what the documentation says, inputType should NOT be in the createReadStream function.
+        // Also, the audio resource must NOT be created outside this interaction method, or else deploying the commands will be eternal
+        // Also, using path makes working with directory paths super easy and not confusing or hard to write
         let leAudio = createAudioResource(createReadStream(path.join('gamblecore.ogg')), {inputType: StreamType.Arbitrary,});
         let leVoiceConnection = await getVoiceConnection(serverId);
         if (!leVoiceConnection) { return; }
